@@ -51,6 +51,10 @@ if sub_categories:
   total_profit = df_subcategory["Profit"].sum()
   profit_margin = (total_profit / total_sales) * 100 if total_sales != 0 else 0
 
+st.write(f"Total Sales: ${total_sales:,.2f}")
+    st.write(f"Total Profit: ${total_profit:,.2f}")
+    st.write(f"Profit Margin: {profit_margin:.2f}%")
+
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
