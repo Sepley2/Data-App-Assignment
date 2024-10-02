@@ -54,7 +54,20 @@ if sub_categories:
     st.write(f"Total Sales: ${total_sales:,.2f}")
     st.write(f"Total Profit: ${total_profit:,.2f}")
     st.write(f"Profit Margin: {profit_margin:.2f}%")
+# Step 5
+    overall_sales = df["Sales"].sum()
+    overall_profit = df["Profit"].sum()
+    overall_margin = (overall_profit / overall_sales) * 100 if overall_sales != 0 else 0
 
+    # Debugging: Show overall margin in the app for visibility
+    st.write(f"Overall Profit Margin: {overall_margin:.2f}%")
+
+    # Display metrics
+    st.metric(label="Total Sales", value=f"${total_sales:,.2f}")
+    st.metric(label="Total Profit", value=f"${total_profit:,.2f}")
+    st.metric(label="Profit Margin", value=f"{profit_margin:.2f}%", delta=f"{profit_margin - overall_margin:.2f}%")
+else:
+    st.write("Please select at least one sub-category to see the metrics.")
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
