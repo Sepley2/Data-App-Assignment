@@ -47,15 +47,9 @@ if sub_categories:
 
 # Step 4
 if sub_categories:
-    
-    st.write("Selected Sub-Categories:", sub_categories)
-    st.write(df_subcategory.head())  # Display the filtered DataFrame for debugging
-
-   
     total_sales = df_subcategory["Sales"].sum()
     total_profit = df_subcategory["Profit"].sum()
     profit_margin = (total_profit / total_sales) * 100 if total_sales != 0 else 0
-    
     
     st.write(f"Total Sales: ${total_sales:,.2f}")
     st.write(f"Total Profit: ${total_profit:,.2f}")
