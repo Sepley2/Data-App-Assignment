@@ -41,6 +41,7 @@ sub_categories = st.multiselect("Select Sub Category", df_category["Sub_Category
 # Step 3
 if sub_categories:
   df_subcategory = df_category[df_category["Sub_Category"].isin(sub_categories)]
+  df_subcategory = df_subcategory.reset_index()
   sales_by_month_subcategory = df_subcategory.groupby(pd.Grouper(key="Order_Date", freq = 'M')).sum()["Sales"]
   st.line_chart(sales_by_month_subcategory)
 
