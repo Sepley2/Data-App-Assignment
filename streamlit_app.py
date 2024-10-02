@@ -45,6 +45,12 @@ if sub_categories:
   sales_by_month_subcategory = df_subcategory.groupby(pd.Grouper(key="Order_Date", freq = 'M')).sum()["Sales"]
   st.line_chart(sales_by_month_subcategory)
 
+# Step 4
+if sub_categories:
+  total_sales = df_subcategory["Sales"].sum()
+  total_profit = df_subcategory["Profit"].sum()
+  profit_margin = (total_profit / total_sales) * 100 if total_sales != 0 else 0
+
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
